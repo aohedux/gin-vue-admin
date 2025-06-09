@@ -1,6 +1,8 @@
 package request
 
 import (
+	"mime/multipart"
+
 	"gorm.io/gorm"
 )
 
@@ -46,3 +48,35 @@ type GetAuthorityId struct {
 }
 
 type Empty struct{}
+
+// 添加账号时的请求
+type ImportSessionRequest struct {
+	MasterUsername string                  `form:"master_username" binding:"required"`
+	SessionFiles   []*multipart.FileHeader `form:"session_files[]" binding:"required"`
+}
+
+// 查询所有账号时的请求
+type GetSessionRequest struct {
+	MasterUsername string `json:"master_username"`
+	Page           int    `json:"page"`
+	PageSize       int    `json:"page_size"`
+	Name           string `json:"name"`
+	Tag            int    `json:"tag"`
+}
+type DeleteSessionRequest struct {
+	Phone []string `json:"phone"`
+}
+type LoginSessionRequest struct {
+	Phone  []string `json:"phone"`
+	Proxy  string   `json:"proxy"`
+	Server int      `json:"server"`
+}
+type OutLoginSessionRequest struct {
+	Phone []string `json:"phone"`
+}
+
+// 分组请求
+type ChangeTagTelegramRequest struct {
+	Phone []string `json:"phone"`
+	TagId int      `json:"tag_id"`
+}

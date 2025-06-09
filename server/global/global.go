@@ -2,10 +2,10 @@ package global
 
 import (
 	"fmt"
-	"github.com/mark3labs/mcp-go/server"
 	"sync"
 
 	"github.com/gin-gonic/gin"
+	"github.com/mark3labs/mcp-go/server"
 	"github.com/qiniu/qmgo"
 
 	"github.com/flipped-aurora/gin-vue-admin/server/utils/timer"
